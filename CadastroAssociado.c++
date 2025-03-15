@@ -227,6 +227,46 @@ void cadastrar_visita(vector<Visitas> &visitas)
     visitas.push_back(novaVisita);
 }
 
+void relatorio_associados(const std::vector<Associado> &associados, const vector<Dependente> &dependentes)
+{
+    cout << endl
+         << "Relatório de Associados:" << endl;
+    for (size_t i = 0; i < associados.size(); ++i)
+    {
+        cout << "Associado - "
+             << "Índice: " << i << ", Nome: " << associados[i].nome << ", Idade: " << associados[i].idade << ", cpf: " << associados[i].cpf << endl;
+        for (size_t i = 0; i < dependentes.size(); ++i)
+        {
+            if (dependentes[i].cpf_associado == associados[i].cpf)
+            {
+                cout << "  "
+                     << "Dependente - "
+                     << "Índice: " << i << ", Nome: " << dependentes[i].nome << ", Idade: " << dependentes[i].idade << ", cpf: " << dependentes[i].cpf_associado << endl;
+            }
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
+
+void relatorio_visitas(const vector<Visitas> &visitas, const std::vector<Associado> &associados) // IGUALAR AO DE ASSOCIADO
+{
+    cout << endl
+         << "Relatório de visitas:" << endl;
+    for (size_t i = 0; i < associados.size(); ++i)
+    {
+        cout << "Associado - "
+             << "Índice: " << i << ", Nome: " << associados[i].nome << ", Idade: " << associados[i].idade << ", cpf: " << associados[i].cpf << endl;
+        for (size_t i = 0; i < visitas.size(); ++i)
+        {
+            cout << "    Índice: " << i << ", Nome: " << visitas[i].nome << ", Idade: " << visitas[i].idade << ", cpf: " << visitas[i].cpf_associado << endl
+                 << "     entrada: " << visitas[i].dt_entrada << ", saida: " << visitas[i].dt_saida << endl;
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
+
 
 
 
