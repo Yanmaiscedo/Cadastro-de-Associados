@@ -200,6 +200,33 @@ void cadastrar_visitante(vector<Visitante> &visitantes)
     }
 }
 
+void cadastrar_visita(vector<Visitas> &visitas)
+{
+    Visitas novaVisita;
+
+    cin.ignore();
+    cout << "===Nova Visita===" << endl;
+
+    cout << "nome: ";
+    getline(cin, novaVisita.nome);
+
+    cout << "idade: ";
+    cin >> novaVisita.idade;
+
+    cin.ignore();
+
+    cout << "cpf: ";
+    getline(cin, novaVisita.cpf_associado);
+
+    cout << "data de entrada: ";
+    getline(cin, novaVisita.dt_entrada);
+
+    cout << "data de saida: ";
+    getline(cin, novaVisita.dt_saida);
+
+    visitas.push_back(novaVisita);
+}
+
 
 
 
