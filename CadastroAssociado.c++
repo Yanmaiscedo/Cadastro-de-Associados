@@ -303,5 +303,123 @@ int main()
     vector<Visitante> visitantes;
     vector<Visitas> visitas;
 
+
+    while (true)
+    {
+        cout << "=========================Menu Principal=========================" << endl;
+        cout << "1-Cadastro e manutencao de associados" << endl;
+        cout << "2-Cadastro e manutencao de dependentes" << endl;
+        cout << "3-Cadastro e manutencao de Visitantes" << endl;
+        cout << "4-Aviso de maioridade" << endl;
+        cout << "5-Registro de visita" << endl;
+        cout << "6-Relatorio de dependentes/associados" << endl;
+        cout << "7-Relatorio de visitas por associado" << endl;
+        cout << "8-Encerrar o programa" << endl;
+        cout << "Escolha uma opcao: " << endl;
+        cout << "================================================================" << endl;
+
+        int escolha;
+        cin >> escolha;
+
+        switch (escolha)
+        {
+        case 1:
+            cadastrar_associado(associados);
+            break;
+        case 2:
+            cadastrar_dependente(dependentes);
+            break;
+        case 3:
+            cadastrar_visitante(visitantes);
+            break;
+        case 4:
+            dependentes_mais18(dependentes);
+            break;
+        case 5:
+            cadastrar_visita(visitas);
+            break;
+        case 6:
+            relatorio_associados(associados, dependentes);
+            break;
+        case 7:
+            relatorio_visitas(visitas, associados);
+            break;
+        case 8:
+            cout << "Acabou!!!";
+            return 0;
+            break;
+        default:
+            cout << "Opção inválida. Tente novamente." << endl;
+        }
+
+        ofstream Adados("Associados.txt", ios::trunc);
+
+        if (Adados.is_open())
+        {
+            for (const auto &acadastro : associados)
+            {
+                Adados << acadastro.nome << ',' << acadastro.idade << ',' << acadastro.cpf << endl;
+            }
+
+            Adados.close();
+        }
+        else
+        {
+            cout << "Erro ao abrir o arquivo." << endl;
+            return 1;
+        }
+
+        ofstream Ddados("Dependentes.txt", ios::trunc);
+
+        if (Ddados.is_open())
+        {
+            for (const auto &dcadastro : dependentes)
+            {
+                Ddados << dcadastro.nome << ',' << dcadastro.idade << ',' << dcadastro.cpf_associado << endl;
+            }
+
+            Ddados.close();
+        }
+        else
+        {
+            cout << "Erro ao abrir o arquivo." << endl;
+            return 1;
+        }
+
+        ofstream Vdados("Visitas.txt", ios::trunc);
+
+        if (Vdados.is_open())
+        {
+            for (const auto &vcadastro : visitas)
+            {
+                Vdados << vcadastro.nome << ',' << vcadastro.idade << ',' << vcadastro.cpf_associado << endl;
+            }
+
+            Vdados.close();
+        }
+        else
+        {
+            cout << "Erro ao abrir o arquivo." << endl;
+            return 1;
+        }
+
+        ofstream Visidados("Visitantes.txt", ios::trunc);
+
+        if (Visidados.is_open())
+        {
+            for (const auto &vicadastro : visitantes)
+            {
+                Visidados << vicadastro.nome << ',' << vicadastro.idade << ',' << vicadastro.cpf_associado << endl;
+            }
+
+            Visidados.close();
+        }
+        else
+        {
+            cout << "Erro ao abrir o arquivo." << endl;
+            return 1;
+        }
+    }
+
     return 0;
 }
