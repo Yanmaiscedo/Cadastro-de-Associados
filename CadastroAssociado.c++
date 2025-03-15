@@ -35,6 +35,10 @@ struct Visitas
 
 int main()
 {
+    vector<Associado> associados;
+    vector<Dependente> dependentes;
+    vector<Visitante> visitantes;
+    vector<Visitas> visitas;
 
     return 0;
 }
