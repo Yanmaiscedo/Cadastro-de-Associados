@@ -144,6 +144,63 @@ void cadastrar_dependente(vector<Dependente> &dependentes)
     }
 }
 
+void cadastrar_visitante(vector<Visitante> &visitantes)
+{
+    int opc;
+    cout << "Voce deseja adicionar um novo visitante ou fazer a manutenção do cadastro de um visitante ja existente? " << endl;
+    cout << "1 - Adicionar novo visitante " << endl;
+    cout << "2 - Fazer a manutenção de um Cadastro " << endl;
+    cin >> opc;
+    if (opc == 1)
+    {
+        Visitante novoV;
+
+        cin.ignore();
+
+        cout << "nome: ";
+        getline(cin, novoV.nome);
+
+        cout << "idade: ";
+        cin >> novoV.idade;
+
+        cin.ignore();
+
+        cout << "cpf: ";
+        getline(cin, novoV.cpf_associado);
+
+        visitantes.push_back(novoV);
+    }
+    else if (opc == 2)
+    {
+        cout << "Digite o índice do cadastro que deseja alterar: ";
+        int indice;
+        cin >> indice;
+
+        if (indice >= 0 && indice < visitantes.size())
+        {
+            cin.ignore();
+
+            cout << "Novo nome: ";
+            getline(cin, visitantes[indice].nome);
+
+            cout << "Nova idade: ";
+            cin >> visitantes[indice].idade;
+
+            cin.ignore();
+
+            cout << "Novo cpf: ";
+            getline(cin, visitantes[indice].cpf_associado);
+
+            cout << "Cadastro alterado com sucesso!" << endl;
+        }
+        else
+        {
+            cout << "Índice inválido." << endl;
+        }
+    }
+}
+
+
 
 
 int main()
