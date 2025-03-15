@@ -267,6 +267,19 @@ void relatorio_visitas(const vector<Visitas> &visitas, const std::vector<Associa
     cout << endl;
 }
 
+void dependentes_mais18(const vector<Dependente> &dependentes)
+{
+    for (size_t i = 0; i < dependentes.size(); i++)
+    {
+        if (dependentes[i].idade >= 18)
+        {
+            cout << "  "
+                 << "Dependente - "
+                 << "Índice: " << i << ", Nome: " << dependentes[i].nome << ", Idade: " << dependentes[i].idade << ", cpf: " << dependentes[i].cpf_associado << endl;
+        }
+    }
+    cout << endl;
+}
 
 
 
